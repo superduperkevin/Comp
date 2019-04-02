@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import values from 'lodash/values';
 import PropTypes from 'prop-types';
 import Node from './Node'
 
