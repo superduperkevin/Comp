@@ -33,11 +33,27 @@ const employees = {
 
 export default class Tree extends React.Component {
     state = {
-        nodes: 
+        nodes: employees,
     }
-
     getRootNodes = () => {
         const { nodes } = this.state;
         return values(nodes).filter(node => node.isRoot === true);
-    }
+      }
+    
+      getChildNodes = (node) => {
+        const { nodes } = this.state;
+        if (!node.children) return [];
+        return node.children.map(path => nodes[path]);
+      }  
+    
+      onToggle = (node) => {
+        const { nodes } = this.state;
+        nodes[node.path].isOpen = !node.isOpen;
+        this.setState({ nodes });
+      }
+    
+      onNodeSelect = node => {
+        const { onSelect } = this.props;
+        onSelect(node);
+      }
 }

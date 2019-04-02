@@ -8,7 +8,6 @@ export default class Navigator extends Component {
 
     onSelect = (file) => this.setState({selected: file});
 
-
     render() {
         const { selected } = this.state;
 
